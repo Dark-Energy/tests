@@ -1,0 +1,52 @@
+.line-menu
+{
+	padding: 0;
+	margin: 0;
+	position: relative;
+	float: left;
+}
+
+.line-menu ul::after
+{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.line-menu ul
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.line-menu li
+{
+	float:left;
+	background: #FFF;
+}
+
+
+.line-menu li ul
+{
+	position: absolute;
+	display: none;
+	background-color: #FFFFF1;
+	border-left: 3px solid #CCCC88;;
+	border-right: 3px solid #CCCC88;;
+	border-bottom: 3px solid #CCCC88;;
+}
+
+
+.line-menu li:hover ul
+{
+	display: block;
+	z-index: 255;
+}
+
+.line-menu li ul li
+{
+	float: none;
+}
+
+

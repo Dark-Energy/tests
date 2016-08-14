@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Мои ссылки</title>
+   <link rel="stylesheet" type="text/css" href="css/news-2.css"  />
+      <link rel="stylesheet" type="text/css" href="css/line-menu.css"  />
+   <link rel="stylesheet" type="text/css" href="css/edit-form.css"  />   
+	<script type="text/javascript" src="database/view.txt"></script>	   
+	<script type="text/javascript" src="js/knockout-3.3.0.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>			
+	
+	<script type="text/javascript" src="js/FileSaver.js"></script>		
+	<script type="text/javascript" src="js/edit-form.js"></script>	
+		<script type="text/javascript" src="js/tests.js"></script>	
+	
+</head>
+
+<body>
+
+<script type="text/html" id="create-item-template">
+	<p> Адрес <input type="text" data-value="href">
+	<p> Текст <input type="text" data-value="text">
+	<p> Тэг <select data-value="tag" data-bind="options: tags, selectedOptions: value"></select>
+	<p>или новый <input type="text" data-value="new_tag">
+	<p>Избранное <input type="checkbox" data-value="favorite" >
+	<p>Текст для избранного <input data-value="favorite_text" >
+</script>
+
+
+<script type="text/html" id="edit-item-template1">
+	<p> Адрес <input type="text" data-value="href" data-bind="value: item.href">
+	<p> Текст <input type="text" data-value="text" data-bind="value: item.text">
+	<p> Тэг <select data-value="tag" data-bind="options: tags, selectedOptions: [item.tag]"></select>
+	<p>или новый <input type="text" data-value="new_tag">
+	<p>Избранное <input type="checkbox" data-value="favorite" data-bind="checked:item.favorite">
+	<p>Текст для избранного <input data-value="favorite_text" data-bind="value:item.favorite_text">
+</script>
+
+<script type="text/html" id="edit-item-template">
+	<p> Адрес <input type="text" data-value="href" data-bind="attr:{value: item.href}">
+	<p> Текст <input type="text" data-value="text" data-bind="attr:{value: item.text}">
+	<p> Тэг <select data-value="tag" data-bind="options: tags, selectedOptions: [item.tag]"></select>
+	<p>или новый <input type="text" data-value="new_tag">
+	<p>Избранное <input type="checkbox" data-value="favorite" data-bind="attr: {checked:item.favorite}">
+	<p>Текст для избранного <input data-value="favorite_text" data-bind="attr: {value:item.favorite_text}">
+</script>
+
+
+<h4 class="news-header" id="header">Мои ссылки</h4>
+
+<div class="header-left-buttons">
+	<a href="links.htm">Запуск</a>
+</div>
+
+<div>
+	<div class="top-line top-buttons line-menu">
+	<ul>
+	<li><a href="javascript:void(0);" id="button-add">Добавить ссылку</a></li>
+	<li><a href="javascript:void(0);" id="button-new-category">Создать категорию</a></li>
+	<li><a href="javascript:void(0);" id="button-move">Перенести</a></li>
+	<li> <a "javascript:void(0);"> Удалить</a>
+	<ul>
+		<li><a href="javascript:void(0);" id="button-remove-tag"> страницу</a></li>
+		<li><a href="javascript:void(0);" id="button-remove-category"> категорию</a></li>
+	</ul>
+	<li><A href="javascript:void(0);">Экспортировать</a>
+		<ul>
+		<li><a href="javascript:void(0);" id="button-export-tag"> страницу</a></li>
+		<li><a href="javascript:void(0);" id="button-export-category"> категорию </a>	</li>
+		</ul>
+	</li>
+	<li><a href="javascript:void(0);" id="button-edit-page">Правка</a></li>
+	<li><a href="javascript:void(0);" id="button-save">Сохранить всё</a></li>
+	</ul>
+	</div>
+	
+		<div class="clear-block"></div>
+	<script type="text/html" id="template-category-menu">
+		<a data-bind="text: text, attr: {href: '#'+hash}" ></a> 
+	</script>
+	<div class="top-line top-buttons" id="category-menu" data-bind="template: {name: 'template-category-menu', foreach: category_menu, as: 'item'}">
+
+	</div>
+	<div class="clear-block1"></div>
+</div>
+
+<div class="content">
+
+<div id="cat-view">
+	<script id="template-favorites-menu" type="text/html">
+	<a data-bind="text:item.favorite_text, attr: {href: item.href}"></a>
+	</script>
+	<div class="news-line" id="favorites-menu" data-bind="template:{name:'template-favorites-menu', foreach: favorites, as: 'item'}"></div>
+
+	<div class="clear-block bottom-line"></div>
+
+	<script id="template-page-menu" type="text/html">
+	<a data-bind="text:$data, attr:{href: '#'+$parent.category_name + '/'+ $data}"></a>
+	</script>
+	
+	
+	<div class="buttons-headers" id="page-menu" data-bind="template:{name: 'template-page-menu', foreach: tags}">
+		
+	</div>
+</div>
+
+
+	<script id="template-page-content-edit" type="text/html">
+	<div class="editable-link">
+		<div class="button-panel">
+			<button class="edit-btn" data-bind="attr:{'data-id':_id}">Правка</button>
+			<button class="delete-btn" data-bind="attr:{'data-id':_id}">Удалить</button>
+			<br>
+		</div>
+		<a data-bind="attr:{href:href}, text: text"></a>
+	</div>
+	</script>
+
+	
+<script type="text/html" id="template-page-content">
+		<a data-bind="attr:{href:href}, text: text"></a>
+</script>
+<div class="tab-content" id="page-content" data-bind="template:{name: display.templates[display.mode], foreach: pages[current_tag]}">
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+.edit-form-container
+{
+	background-color: #FFFFFF;
+}
+#custom-edit-form
+{
+	border: 5px solid #55FF55;
+	border-radius: 5px;
+	padding: 10px 10px;
+	background-color: #FFFFFF;
+	z-index : 255;
+}
+
+#custom-edit-form .edit-text-field
+{
+	display: inline-block;
+	padding: 5px 5px;
+	margin: 5px 5px;
+	border: 1px solid #55AA55;
+	border-radius: 3px;
+}
+
+.mt-input-container
+{
+	background-color: rgba(1, 1, 1, 1);
+	clear: both;
+}
+
+.mt-input-container
+{
+	position: relative;
+	padding: 15px 20px;
+	background-color: #ffffff;
+}
+
+.mt-input-container input[type='text'],
+.mt-input-container select
+{
+	padding: 5px 10px;
+	min-width: 200px;
+}
+
+.edit-form-container button
+{
+	padding: 5px 10px;
+	background-image: linear-gradient(to bottom, #FFFFF1, #DDDDAA);
+}
+
+.edit-form-container button:hover
+{
+	background-image: linear-gradient(to bottom, #FFFF00, #DDDD00);
+}
+
+.edit-form-container button.edit-form-cancel-btn
+{
+	float: right;
+}
+
+.edit-form-container .edit-form-title
+{
+	margin: 5px 5px;
+	background-color: #0000FF;
+	color: #FFFF00;
+	padding: 5px 5px;
+	text-align: center;
+}

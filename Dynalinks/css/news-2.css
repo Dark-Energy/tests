@@ -1,0 +1,338 @@
+html,body
+{
+	margin: 0;
+	padding: 5px;
+}
+
+.main-header
+{
+	margin-right: 25px;
+	bottom: 1px solid black;
+	clear: both;
+}
+
+.top-buttons a
+{
+	border: none;
+	border-radius: 1px;
+}
+
+.news-block
+{
+	margin-bottom: 5px;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.075);
+	border-radius: 4px;
+}
+
+.news-line
+{
+	margin-left: 100px;
+	margin-right: 85px;
+	border-left: 3px solid #FFCCAA;
+	margin-right: 25px;	
+}
+
+.news-line a,
+.news-block a
+{
+	display: block;
+	color: black;
+	/*background-color: #fff;*/
+	text-decoration: none;
+	padding: 10px 15px;	
+}
+
+.bottom-line
+{
+	border-bottom: 3px solid #FFCCAA;
+}
+
+.news-line a
+{
+	padding: 15px 15px 15px 15px;	
+	margin-right: 0px;
+	display: inline-block;
+	border-right: 3px solid #FFCCAA;
+}
+
+
+.news-line a:hover,
+.news-block a:hover
+{
+	text-decoration: none;	
+	background-color: #EEE;
+}
+
+
+.clear-block
+{
+	clear: both;
+}
+
+.menu-up
+{
+	width: auto;
+}
+
+
+.news-header
+{
+	text-align: right;
+	margin: 0px;
+	margin-right: 25px;
+	padding: 0 3px;
+	font-style: oblique;
+	/*background-color: #006dff;
+	color: #ccffcc;*/
+	border-bottom: 3px solid #006dff;
+}
+
+
+.header-left-buttons
+{
+	width: 80px;
+	margin-right: 5px;
+	float: left;
+}
+
+.news-backlink
+{
+	/*float: left;*/
+	border: 1px solid black;
+	padding: 10px 10px;
+	margin: 5px 5px;
+	border-radius: 7px;
+	width: 75px;
+}
+
+.news-backlink a,
+.news-backlink a:visited,
+.page-menu a:visited
+{
+	color: #FFCCAC;
+}
+
+.news-backlink:hover
+{
+	background-color: #00C6C6;
+}
+
+
+.separator
+{
+	margin: 30px 0;
+}
+
+
+div.header
+{
+	padding: 15px 0;
+}
+
+.buttons-headers 
+{
+	width: 270px;
+	float: left;
+}
+
+.buttons-headers a,
+.buttons-headers a:visited
+{
+	display: block;
+	outline: 1px solid #FFCACF;
+	padding: 5px 15px;	
+	text-decoration: none;
+	/*font-family: Verdana, Georgia, serif;*/
+	/*font-size: 14px;	*/
+	color: #0000FF;
+}
+
+.buttons-headers a:hover
+{
+	background-color: #AA0000;
+	color: #FFFFFF;
+}
+
+.tab-content
+{
+	float: left;
+	outline: 1px solid #FFCACF;
+	min-width: 540px;
+	max-width: 800px;
+}
+
+.tab-content a,
+.tab-content a:visited
+{
+	display: inline-block;
+	padding: 5px 15px;
+	margin: 5px 5px;
+	/*outline: 1px solid #000000;	*/
+	color: black;
+	width: 220px;
+	font-family: Verdana, Georgia, serif;
+	font-size: 14px;
+	border-bottom: 0.6px solid rgb(225, 225, 215);
+	border-right: 0.6px solid rgb(225, 225, 215);
+	text-decoration: none;
+}
+
+.tab-content a:hover
+{
+	background-color: rgb(245, 245, 245);
+	color: #CC0000;
+}
+
+.edit-tab
+{
+}
+
+.editable-link
+{
+	display: inline-block;
+	position: relative;
+	/*width: 220px;*/
+}
+
+.editable-link .edit-btn
+{
+	position: absolute;
+	left: 0px;
+}
+
+.editable-link .delete-btn
+{
+	position: absolute;
+	right: 0px;
+}
+
+
+
+/*
+top buttons
+*/
+
+.top-buttons a,
+.top-buttons a:visited
+{
+	background-color: #FFFFF1;
+	background-image: linear-gradient(to bottom, #FFFFF1, #DDDDAA);
+	border-radius: 0;
+	text-decoration: none;
+	color: #009999;
+	font-family: Verdana, Georgia, Times New Roman, serif;
+	font-size: 12px;
+}
+
+.top-buttons a:hover
+{
+	text-decoration: none;
+	background-color: #DDDDAA;
+	color: white;
+	/*background-color: #CCCC88;*/
+	background-position: 0 50%;
+	transition: background-position 0.1s linear 0s;
+	animation: 0.4s ease-in-out 0.1s normal none 1 zoomIn;
+	-webkit-animation: bounceIn 0.4s ease-in-out;
+	/*
+		duration
+		timing function
+		delay
+		direction
+		fill-mode
+		iteration count
+		name
+	*/
+	
+}
+
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+    animation-timing-function: ease-in-out;
+  }
+
+  50% {
+    transform: scale(1.1);
+    animation-timing-function: ease-out;
+  }
+  
+  100% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+  
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+
+@keyframes bounceIn 
+{
+	0% {
+		transform: scale(1);
+	}
+	
+	50% {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+	
+	100% {
+		transform: scale(1);
+	}
+}
+
+
+@-webkit-keyframes bounceIn {
+	0% {
+		-webkit-transform: scale(1);
+	}
+	
+	50% {
+		opacity: 1;
+		-webkit-transform: scale(1.1);
+	}
+	
+	100% {
+		-webkit-transform: scale(1);
+	}
+}
+
+
+
+
+@media (max-width: 767px) {
+	.line-menu li 
+	{
+		float: none;
+	}
+	.line-menu li ul
+	{
+		position: relative;
+		transform: scale(0);
+	}
+	.line-menu li:hover ul
+	{
+		transform: scale(1);
+		*animation: 0.5s ease-in-out 0s normal none 1 zoomIn;		
+	}
+}
+
+/*
+end top-button
+*/
+.top-line a
+{
+	/*
+	display: block;
+	float: left;
+	*/
+	display: inline-block;
+	margin: 5px; 
+	padding: 5px;
+}
+
