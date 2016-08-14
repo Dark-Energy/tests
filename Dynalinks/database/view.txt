@@ -1508,12 +1508,6 @@ var my_links = {
   ],
   "job": [
    {
-    "href": "https://id.tmtm.ru/settings/?consumer=default",
-    "text": "tm profile",
-    "tag": "Работа",
-    "_id": "se1u1w9sq1471073372658"
-   },
-   {
     "href": "https://www.fl.ru/projects/",
     "text": "fl.ru",
     "tag": "Работа",
@@ -1526,24 +1520,6 @@ var my_links = {
     "tag": "Работа",
     "favorite_text": "my github",
     "_id": "0ll3e25301471073372658"
-   },
-   {
-    "href": "http://voronezh.hh.ru/search/vacancy?salary=50000&order_by=publication_time&clusters=true&only_with_salary=true&area=26&enable_snippets=true&text=python+удаленно&no_magic=true&search_period=30&from=SIMILAR_QUERY",
-    "text": "HH.ru Воронеж",
-    "tag": "Работа",
-    "_id": "6txva4abn1471073372658"
-   },
-   {
-    "href": "http://voronezh.hh.ru/search/vacancy?text=javascript&only_with_salary=true&order_by=publication_time&area=26&enable_snippets=true&no_magic=true&search_period=30&clusters=true&salary=50000",
-    "text": "HH.ru Воронеж (2)",
-    "tag": "Работа",
-    "_id": "ur1qevqwe1471073372658"
-   },
-   {
-    "href": "https://freelance.ru/projects/?spec=4",
-    "text": "Freelance.ru IT и Программирование - Проекты",
-    "tag": "Работа",
-    "_id": "q367x3r201471073372658"
    },
    {
     "href": "https://aerotwist.com/tutorials/create-your-own-environment-maps/",
