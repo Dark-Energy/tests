@@ -3,6 +3,18 @@ Utils functions
 
 */
 
+function create_url()
+{
+	var r = "";
+	for(var i= 0; i < arguments.length; i++) {
+		if (i > 0) {
+			r += "/";
+		}
+		r += encodeURIComponent(arguments[i]);
+	}
+	return r;
+}
+
 function get_first_key(obj)
 {
 	for(var key in obj) {
@@ -240,33 +252,6 @@ My_Router.prototype.start = function (force_hash_change)
 
 */
 
-
-function _add_id(data)
-{
-	for(var cat in data) {
-		arr = data[cat];
-		for(var i =0; i < arr.length; i++) {
-			if (!arr[i]._id) {
-				arr[i]._id = Dynalinks.Utils.create_id();
-			}
-		}
-	}
-}
-
-
-function Dynalinks(data, display)
-{
-	this.database = data.database;
-	//_add_id(data.database);
-	this.names = data.names;
-	this.categories = {};
-	this.display = display;
-	
-	this.initialize();
-}
-
-Dynalinks.prototype.Database_Name = "database.txt";
-
 Dynalinks.Utils = {};
 
 Dynalinks.Utils.create_id = function ()
@@ -279,7 +264,42 @@ Dynalinks.Utils.check_item = function (item)
 	if (! item._id) {
 		item._id = Dynalinks.Utils.create_id();
 	}
+	if (item.favorite && !item.favorite_text) {
+		item.favorite_text = item.text;
+	}
+	if (!item.favorite && item.favorite_text) {
+		item.favorite = true;
+	}
 }
+
+Dynalinks.Utils.check_database = function (data)
+{
+	for(var cat in data) {
+		arr = data[cat];
+		for(var i =0; i < arr.length; i++) {
+			Dynalinks.Utils.check_item(arr[i]);
+		}
+	}
+}
+
+
+function Dynalinks(data, display)
+{
+	this.database = data.database;
+	//Dynalinks.Utils.check_database(data.database);
+	this.names = data.names;
+	this.categories = {};
+	this.display = display;
+	
+	//this.initialize();
+}
+
+Dynalinks.prototype.create_url = function(category, tag)
+{
+	return create_url.apply(this, arguments);
+}
+
+Dynalinks.prototype.Database_Name = "database.txt";
 
 /*
 	CONTEXT
@@ -289,7 +309,8 @@ Dynalinks.Context = function (data, category)
 	this.category_name = category;
 	this.pages = {};
 	this.favorites = new Array();
-	this.tags = new Array();
+	//this.tags = new Array();
+	this.tags = ko.observableArray();
 	this.hash = {};
 	
 	var item, tag;
@@ -308,10 +329,7 @@ Dynalinks.Context = function (data, category)
 			this.tags.push(tag);
 		}
 		this.pages[tag].push(item);
-		if (item.favorite || item.favorite_text) {
-			if (item.favorite && !item.favorite_text) {
-				item.favorite_text = item.text;
-			}
+		if (item.favorite) {
 			this.favorites.push(item);
 		}
 	}
@@ -332,15 +350,13 @@ Dynalinks.Context.prototype.move_item = function (item, new_tag)
 Dynalinks.Context.prototype.change_favorite = function(item, favorite, favorite_text)
 {
 	//remove or add to favorites
-	item.favorite = !!item.favorite;	
 	if (item.favorite !== favorite) {
 		if (item.favorite) {
 			this.favorites.remove( function (i) { return i._id === item._id; } );
+			delete item.favorite_text;
+			return;
 		}
 		else {
-			if (!item.favorite_text) {
-				item.favorite_text = item.text;
-			}
 			this.favorites.push( item );
 		}
 		item.favorite = favorite;
@@ -353,7 +369,7 @@ Dynalinks.Context.prototype.change_favorite = function(item, favorite, favorite_
 			item.favorite_text = favorite_text;
 		}
 	}
-	this.favorites.valueHasMutated();	
+	this.favorites.valueHasMutated();
 }
 
 //create new page if doen't exists
@@ -380,17 +396,21 @@ Dynalinks.Context.prototype.remove_page = function (tag)
 	}
 	
 	//remove page tag from tag list
+	this.tags.remove(function (i) { return i === tag;});
+	/*
 	for(var i = 0; i < this.tags.length; i++) {
 		if (this.tags[i] === tag) {
 			this.tags.splice(i, 1);
 			return;
 		}
 	}
+	*/
 	
 	//clean favorite list
 	this.favorites.remove( function (i) {return i.tag === tag;});
 }
 
+//1) add to page; 2) add to favorites, if marked; 3) add to hash
 Dynalinks.Context.prototype.add_item = function (item)
 {
 	Dynalinks.Utils.check_item(item);
@@ -401,9 +421,6 @@ Dynalinks.Context.prototype.add_item = function (item)
 	var page = this.get_page(item.tag);
 	page.push(item);
 	if (item.favorite) {
-		if (!item.favorite_text) {
-			item.favorite_text = item.text;
-		}
 		this.favorites.push(item);
 	}
 	this.hash[item._id] = item;
@@ -507,7 +524,6 @@ Dynalinks.prototype.show_page = function (name)
 		console.log("page " + old_name + " not found, show page "+name);
 		if (!name) {
 			console.log("category is empty, there are not page for show they");
-			return;
 		}
 	}
 	this.context.current_tag = name;
@@ -574,9 +590,8 @@ Dynalinks.prototype.add_link_to_category = function (item, category)
 	this.database[category].push(item);	
 	var context = this.get_category_context(category);
 	context.add_item(item);
-	console.log(item.tag, context.hash[item._id]);
 	
-	mr.navigate(category + "/" + item.tag, true);
+	mr.navigate(this.create_url(category, item.tag), true);	
 }
 
 
@@ -596,7 +611,7 @@ Dynalinks.prototype.add_category = function (name)
 	this.database[name] = new Array();
 	this.names[name] = name;
 	this.category_menu.push({hash:name, text: name});
-	mr.navigate(name, true);
+	mr.navigate(this.create_url(name), true);
 }
 
 Dynalinks.prototype.remove_tag = function (category, tag)
@@ -639,7 +654,7 @@ Dynalinks.prototype.move_tag = function (tag, old_category, new_category)
 	//old_context.remove_page(tag);
 	
 	//3. reshow page
-	mr.navigate( new_category + "/"+tag, true);
+	mr.navigate( this.create_url(new_category,tag), true);
 }
 
 
@@ -665,8 +680,8 @@ Dynalinks.prototype.get_from_active_context = function(_id)
 Dynalinks.prototype.update_item = function(old, new_value)
 {
 	//check favorite status
-	if (old.favorite != new_value.favorite) {
-		this.context.change_favorite(item, new_value.favorite, new_value.favorite_text);
+	if (old.favorite !== new_value.favorite) {
+		this.context.change_favorite(old, new_value.favorite, new_value.favorite_text);
 	}
 	
 	for(var key in new_value) {
@@ -681,7 +696,7 @@ Dynalinks.prototype.update_item = function(old, new_value)
 	if (old.tag !== new_value.tag || new_value.new_tag) {
 		this.context.move_item(old, new_value.new_tag || new_value.tag);
 	}
-	mr.navigate(this.context.category_name + "/" + old.tag, true);	
+	mr.navigate(this.create_url(this.context.category_name, old.tag), true);	
 	
 }
 
@@ -689,6 +704,16 @@ Dynalinks.prototype.export_category = function (name)
 {
 	this.save_data_to_file(name + ".txt", this.database[name], "my_cat");
 }
+
+
+
+Dynalinks.prototype.export_tag = function (category, tag)
+{
+	var context = this.get_category_context(category);
+	var data = context.pages[tag];
+	this.save_data_to_file(tag + ".txt", data, "my_page");
+}
+
 
 Dynalinks.prototype.remove_category = function (name)
 {
@@ -701,8 +726,9 @@ Dynalinks.prototype.remove_category = function (name)
 	if (this.names[name]) {
 		delete this.names[name];
 	}
+	this.category_menu.remove( function (i) { return i.hash === name; });
 	if (this.context.category_name === name) {
-		mr.navigate(get_first_key(this.names), true);
+		mr.navigate(this.create_url(get_first_key(this.names)), true);
 	}
 }
 
@@ -815,12 +841,24 @@ Application.prototype.edit_item = function (id)
 
 Application.prototype.turn_edit = function ()
 {
-	
+	if (this.dynalinks.display.mode === "page_view") {
+		this.dynalinks.display.mode = "page_edit";
+	}
+	else {
+		this.dynalinks.display.mode = "page_view";
+	}
+	this.dynalinks.show_page(this.dynalinks.context.current_tag);
 }
 
 Application.prototype.export_category = function ()
 {
 	this.dynalinks.export_category(this.dynalinks.context.category_name);
+}
+
+Application.prototype.export_tag = function ()
+{
+	this.dynalinks.export_tag(this.dynalinks.context.category_name, 
+		this.dynalinks.context.current_tag);
 }
 
 Application.prototype.remove_category = function ()
@@ -849,7 +887,20 @@ Application.prototype.remove_tag = function ()
 			self.dynalinks.context.category_name, 
 			self.dynalinks.context.current_tag
 			);
-		mr.navigate(self.dynalinks.context.category_name, true);
+		mr.navigate(this.dynalinks.create_url(self.dynalinks.context.category_name), true);
+	}
+	var form = new PopupForm(params);
+	form.show();
+}
+
+Application.prototype.create_category = function ()
+{
+	var params = {};
+	params.type = "text";
+	params.title = "Название новой папки";
+	var self  = this;
+	params.handler = function (value) {
+		self.dynalinks.add_category(value)
 	}
 	var form = new PopupForm(params);
 	form.show();
@@ -859,12 +910,15 @@ var dynalinks;
 
 Application.prototype.Initialize = function ()
 {
+	var self = this;
+	
+
 	//hack, get database name for 'save' function
 	var tmp = window.location.href.split('#')[0].split('/');
 	tmp = tmp[tmp.length-1].split('.');
 	this.Save_Filename = tmp[0]  + ".txt";
 	
-	var self = this;
+
 	var display = {};
 	this.display = display;
 	display.mode = 'page_view';
@@ -873,24 +927,35 @@ Application.prototype.Initialize = function ()
 	display.templates['page_view'] = 'template-page-content';
 	
 	dynalinks = this.dynalinks = new Dynalinks(my_links, display);
+
+	ko.bindingHandlers.livelink =  {
+		init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+			var fragments = ko.unwrap(valueAccessor());
+			var cat = bindingContext.$parent.category_name;
+			element.href = '#'+self.dynalinks.create_url(cat, fragments);
+		},
+		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+			var fragments = ko.unwrap(valueAccessor());
+			var cat = bindingContext.$parent.category_name;			
+			element.href = '#'+self.dynalinks.create_url(cat, fragments);
+		}
+	};
+
+	dynalinks.initialize();
 	
 	///
 	document.getElementById("button-edit-page").onclick = function (e) {
-		if (dynalinks.display.mode === "page_view") {
-			dynalinks.display.mode = "page_edit";
-		}
-		else {
-			dynalinks.display.mode = "page_view";
-		}
-		dynalinks.show_page(dynalinks.context.current_tag);
+		self.turn_edit();
 	}
 
 	
 	//binding events
-	var el = document.getElementById("button-add");
-	el.onclick = function () 
-	{ 
+	var el = document.getElementById("button-add").onclick = function () { 
 		self.add_item(); 
+	}
+	
+	document.getElementById("button-create-category").onclick = function () {
+		self.create_category();
 	}
 	
 	document.getElementById("button-remove-category").onclick = function () {
@@ -912,6 +977,11 @@ Application.prototype.Initialize = function ()
 	document.getElementById("button-export-category").onclick = function () {
 		self.export_category();
 	}
+
+	document.getElementById("button-export-tag").onclick = function () {
+		self.export_tag();
+	}
+
 	
 	document.getElementById("page-content").addEventListener("click", function (e) {
 		var target = e.target || e.srcElement; 

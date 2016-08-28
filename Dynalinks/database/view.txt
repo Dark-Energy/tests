@@ -821,7 +821,8 @@ var my_links = {
     "text": "Книжный трекер",
     "tag": "Главное",
     "favorite": true,
-    "_id": "cgmfymgz71471073372657"
+    "_id": "cgmfymgz71471073372657",
+    "favorite_text": "Книжный трекер"
    },
    {
     "href": "http://www.ebdb.ru/",
@@ -858,7 +859,8 @@ var my_links = {
     "text": "Флибуста",
     "tag": "Главное",
     "favorite": true,
-    "_id": "hiu1xcrph1471073372658"
+    "_id": "hiu1xcrph1471073372658",
+    "favorite_text": "Флибуста"
    },
    {
     "href": "http://coollib.net/",
@@ -1512,14 +1514,16 @@ var my_links = {
     "text": "fl.ru",
     "tag": "Работа",
     "favorite_text": "fl.ru",
-    "_id": "aa106b7t81471073372658"
+    "_id": "aa106b7t81471073372658",
+    "favorite": true
    },
    {
     "href": "https://github.com/Dark-Energy/tests",
     "text": "my github",
     "tag": "Работа",
     "favorite_text": "my github",
-    "_id": "0ll3e25301471073372658"
+    "_id": "0ll3e25301471073372658",
+    "favorite": true
    },
    {
     "href": "https://aerotwist.com/tutorials/create-your-own-environment-maps/",
@@ -1997,58 +2001,64 @@ var my_links = {
     "href": "http://www.mediaboom.org/tags/Space+Rock/",
     "text": "Mediaboom - space rock",
     "tag": "Главное",
-    "favorite": true,
+    "favorite": false,
     "_id": "w6ivzvz8k1471073372659"
    },
    {
     "href": "http://www.mediaboom.org/tags/Psychedelic+Rock/",
     "text": "Mediaboom - psychedelic",
     "tag": "Главное",
-    "favorite": true,
+    "favorite": false,
     "_id": "7iw12fsov1471073372659"
    },
    {
     "href": "http://www.diary.ru/~musicbunker/",
     "text": "Музыкальный ящик",
     "tag": "Главное",
-    "favorite": true,
+    "favorite": false,
     "_id": "334tpka1s1471073372659"
    },
    {
     "href": "http://good-music.kiev.ua/",
     "text": "Киевский форум <b>Хорошая музыка</b>, рок всех направлений",
     "tag": "Главное",
-    "_id": "dlo6lkqo31471073372659"
+    "_id": "dlo6lkqo31471073372659",
+    "favorite": false
    },
    {
     "href": "http://dark-world.ru/",
     "text": "<b>Тёмный мир</b> - метал, мрачный эмбиент, темная сцена",
     "tag": "Главное",
-    "_id": "psot8eam61471073372659"
+    "_id": "psot8eam61471073372659",
+    "favorite": false
    },
    {
     "href": "http://jazz-jazz.ru/?category=download",
     "text": "Jazz-jazz.ru",
     "tag": "Главное",
-    "_id": "i10emxdkd1471073372659"
+    "_id": "i10emxdkd1471073372659",
+    "favorite": false
    },
    {
     "href": "http://valhallametaldownloads.com/dreamtale-discography-320-kbpsmega/",
     "text": "Valgalla downloads - обменник",
     "tag": "Прочие",
-    "_id": "2w2td7oco1471073372659"
+    "_id": "2w2td7oco1471073372659",
+    "favorite": false
    },
    {
     "href": "http://getrockmusic.org/laserdrift-laserdrift-2015.html#more-7824",
     "text": "get rock music",
     "tag": "Прочие",
-    "_id": "vl8r2vy0u1471073372659"
+    "_id": "vl8r2vy0u1471073372659",
+    "favorite": false
    },
    {
     "href": "http://music-torrent.net/",
     "text": "Music torrent",
     "tag": "Прочие",
-    "_id": "vzi3k8nma1471073372659"
+    "_id": "vzi3k8nma1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.discogs.com/",
@@ -2070,49 +2080,57 @@ var my_links = {
     "href": "http://coverlib.com/de/entry/id489277/forgotten-tales-the-promise",
     "text": "Библиотека обложек",
     "tag": "Инфо",
-    "_id": "25ahmy9fv1471073372659"
+    "_id": "25ahmy9fv1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.spacesynth.net/Artist",
     "text": "Spacesynth",
     "tag": "Инфо",
-    "_id": "gkbs716581471073372659"
+    "_id": "gkbs716581471073372659",
+    "favorite": false
    },
    {
     "href": "http://steveroach.com/store/store.php?query=category&value=4&cell=10&details=y",
     "text": "Лейбл Стива Роуча с инфой о релизах",
     "tag": "Инфо",
-    "_id": "6l3thg4rw1471073372659"
+    "_id": "6l3thg4rw1471073372659",
+    "favorite": false
    },
    {
     "href": "http://jazzportal.ru/",
     "text": "http://jazzportal.ru/",
     "tag": "Прочие",
-    "_id": "cikyc6oyu1471073372659"
+    "_id": "cikyc6oyu1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.neformat.com.ua/forum/tags/space%20rock.html",
     "text": "Укрский форум <b>неформат</b>",
     "tag": "Инфо",
-    "_id": "nsitjjgqg1471073372659"
+    "_id": "nsitjjgqg1471073372659",
+    "favorite": false
    },
    {
     "href": "http://darkmp3.ru/slushat-secret-saucer.html",
     "text": "darkmp3 - мп3 в плохом качестве",
     "tag": "Прочие",
-    "_id": "vaus24bjn1471073372659"
+    "_id": "vaus24bjn1471073372659",
+    "favorite": false
    },
    {
     "href": "http://deepmp3.ru/secret-saucer",
     "text": "deepmp3 - мп3 в плохом качестве",
     "tag": "Прочие",
-    "_id": "rusmj1jo31471073372659"
+    "_id": "rusmj1jo31471073372659",
+    "favorite": false
    },
    {
     "href": "http://getalbums.ru/",
     "text": "getalbums.ru - ссылки на плохие обменники, требует регистрации",
     "tag": "Прочие",
-    "_id": "ez3gmv5k41471073372659"
+    "_id": "ez3gmv5k41471073372659",
+    "favorite": false
    },
    {
     "href": "http://batzbatz.com/jazz-rock-fusion/278202-shas-banryu-chessboxing-volume-one-2008-lossless-mp3.html",
@@ -2126,31 +2144,36 @@ var my_links = {
     "href": "http://www.intoclassics.net/",
     "text": "Погружение в классику - скатились в говно",
     "tag": "Прочие",
-    "_id": "szjdq42og1471073372659"
+    "_id": "szjdq42og1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.aveclassics.net/",
     "text": "aveclassics - бесплатно скачать классическую музыку",
     "tag": "Прочие",
-    "_id": "6adl5t0ks1471073372659"
+    "_id": "6adl5t0ks1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.myzuka.ru/",
     "text": "myzuka.ru » Архив бесплатных mp3 - просто помойка",
     "tag": "Прочие",
-    "_id": "2ouohkktd1471073372659"
+    "_id": "2ouohkktd1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.ektoplazm.com/free-music/proton-kinoun-apeiron",
     "text": "Ektoplasm",
     "tag": "Прочие",
-    "_id": "6guhd3fcc1471073372659"
+    "_id": "6guhd3fcc1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.classicalconnect.com/",
     "text": "classical connect - онлайн прослушивание классики",
     "tag": "Прочие",
-    "_id": "nayunm14t1471073372659"
+    "_id": "nayunm14t1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.spirit-of-metal.com/news-l-en.html",
@@ -2190,73 +2213,85 @@ var my_links = {
     "href": "http://www.dlink.ru/ru/faq/92/",
     "text": "длинк",
     "tag": "Техподдержка",
-    "_id": "tfxjxfdam1471073372659"
+    "_id": "tfxjxfdam1471073372659",
+    "favorite": false
    },
    {
     "href": "http://smart-ip.net/",
     "text": "ваш ip",
     "tag": "Техподдержка",
-    "_id": "850e7n0rx1471073372659"
+    "_id": "850e7n0rx1471073372659",
+    "favorite": false
    },
    {
     "href": "http://moi-ip.ru/",
     "text": "Мой IP",
     "tag": "Техподдержка",
-    "_id": "ip7tnf4601471073372659"
+    "_id": "ip7tnf4601471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.speedtest.net/",
     "text": "Speedtest",
     "tag": "Техподдержка",
-    "_id": "rqlatp90y1471073372659"
+    "_id": "rqlatp90y1471073372659",
+    "favorite": false
    },
    {
     "href": "http://ip-calculator.ru/",
     "text": "Калькулятор подсети",
     "tag": "Техподдержка",
-    "_id": "beif0dbth1471073372659"
+    "_id": "beif0dbth1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.who.is/",
     "text": "who is",
     "tag": "Техподдержка",
-    "_id": "nj5chwkjv1471073372659"
+    "_id": "nj5chwkjv1471073372659",
+    "favorite": false
    },
    {
     "href": "http://portableapps.com/apps",
     "text": "Portable Apps",
     "tag": "Программы",
-    "_id": "981wy1kym1471073372659"
+    "_id": "981wy1kym1471073372659",
+    "favorite": false
    },
    {
     "href": "http://forum.ru-board.com/",
     "text": "Компьютерный форум Ru.Board",
     "tag": "Программы",
-    "_id": "lc6lowcoy1471073372659"
+    "_id": "lc6lowcoy1471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.torproject.org/",
     "text": "Tor: anonymity online",
     "tag": "Программы",
-    "_id": "7emp1duva1471073372659"
+    "_id": "7emp1duva1471073372659",
+    "favorite": false
    },
    {
     "href": "http://soft.softodrom.ru/",
     "text": "Softodrom.ru. Лучшие программы для Windows, Windows Mobile, Linux и других *NIX",
     "tag": "Программы",
-    "_id": "kd7eun9a71471073372659"
+    "_id": "kd7eun9a71471073372659",
+    "favorite": false
    },
    {
     "href": "http://freevi.net/",
     "text": "Бесплатные программы на все случаи жизни",
     "tag": "Программы",
-    "_id": "r9bilg1ht1471073372659"
+    "_id": "r9bilg1ht1471073372659",
+    "favorite": false
    },
    {
     "href": "http://softlab-portable.ru/index.php",
     "text": "softlab-portable.ru",
     "tag": "Программы",
-    "_id": "o4jysace51471073372659"
+    "_id": "o4jysace51471073372659",
+    "favorite": false
    },
    {
     "href": "http://www.overclockers.ru/",
@@ -2297,7 +2332,8 @@ var my_links = {
     "href": "http://filmix.net/",
     "text": "Фильмикс",
     "tag": "Кино",
-    "_id": "z6dffpt251471073372660"
+    "_id": "z6dffpt251471073372660",
+    "favorite": false
    },
    {
     "href": "http://seasonvar.ru/",
@@ -2311,49 +2347,57 @@ var my_links = {
     "href": "http://www.ivi.ru/",
     "text": "Иви - легальный метод отъёма денег у населения",
     "tag": "Кино",
-    "_id": "wxcq3ntlz1471073372660"
+    "_id": "wxcq3ntlz1471073372660",
+    "favorite": false
    },
    {
     "href": "http://kinofilms.tv",
     "text": "Кинофилмс.тв",
     "tag": "Кино",
-    "_id": "l0mf6khvb1471073372660"
+    "_id": "l0mf6khvb1471073372660",
+    "favorite": false
    },
    {
     "href": "http://smotri-filmu.ru/",
     "text": "Смотри фильму - здесь сериалы в переводах Лостфилм в том числе",
     "tag": "Кино",
-    "_id": "d8qjm2cjf1471073372660"
+    "_id": "d8qjm2cjf1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.intv.ru/",
     "text": "Ещё какой-то сайт",
     "tag": "Кино",
-    "_id": "t5n8yzqdr1471073372660"
+    "_id": "t5n8yzqdr1471073372660",
+    "favorite": false
    },
    {
     "href": "http://zerx.co/",
     "text": "Zerx",
     "tag": "Кино",
-    "_id": "6a588u75p1471073372660"
+    "_id": "6a588u75p1471073372660",
+    "favorite": false
    },
    {
     "href": "http://ru-video.net/",
     "text": "http://ru-video.net/",
     "tag": "Кино",
-    "_id": "zpv785ezj1471073372660"
+    "_id": "zpv785ezj1471073372660",
+    "favorite": false
    },
    {
     "href": "http://strashnee.ru/",
     "text": "Видео - портал любителей страшных фильмов",
     "tag": "Кино",
-    "_id": "e44gm69vg1471073372660"
+    "_id": "e44gm69vg1471073372660",
+    "favorite": false
    },
    {
     "href": "http://proxydb.ru/ru-ru/",
     "text": "мусорка прокси",
     "tag": "Мусор",
-    "_id": "h1bedd9pf1471073372660"
+    "_id": "h1bedd9pf1471073372660",
+    "favorite": false
    },
    {
     "href": "http://lostfilm.tv/",
@@ -2367,55 +2411,64 @@ var my_links = {
     "href": "http://www.freeonlinetv.ru/",
     "text": "freeonlinetv",
     "tag": "TV",
-    "_id": "5sv7asqxr1471073372660"
+    "_id": "5sv7asqxr1471073372660",
+    "favorite": false
    },
    {
     "href": "http://tv-here.ru/",
     "text": "Телевидение здесь",
     "tag": "TV",
-    "_id": "87hsfvrx61471073372660"
+    "_id": "87hsfvrx61471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.ontvtime.ru/",
     "text": "Онлайн телевидение ontvtime",
     "tag": "TV",
-    "_id": "a3n905q171471073372660"
+    "_id": "a3n905q171471073372660",
+    "favorite": false
    },
    {
     "href": "http://rifmovnik.ru/",
     "text": "Словари русского языка",
     "tag": "Всякое",
-    "_id": "knyrb3jvv1471073372660"
+    "_id": "knyrb3jvv1471073372660",
+    "favorite": false
    },
    {
     "href": "http://doramatv.ru/",
     "text": "Дорама - азиатские сериалы",
     "tag": "Кино",
-    "_id": "23ec9cgn21471073372660"
+    "_id": "23ec9cgn21471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.ufolog.ru/",
     "text": "Уфолог.ру",
     "tag": "Мусор",
-    "_id": "g0eajbgix1471073372660"
+    "_id": "g0eajbgix1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.analogi-lekarstv.ru",
     "text": "Аналоги лекарств",
     "tag": "Всякое",
-    "_id": "m926zockc1471073372660"
+    "_id": "m926zockc1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.porjati.net/",
     "text": "Фотки всяких гадостей",
     "tag": "Мусор",
-    "_id": "6b340c6f61471073372660"
+    "_id": "6b340c6f61471073372660",
+    "favorite": false
    },
    {
     "href": "http://radio-t.com/",
     "text": "Подкасты об IT от провинциалов",
     "tag": "Мусор",
-    "_id": "wcu452dao1471073372660"
+    "_id": "wcu452dao1471073372660",
+    "favorite": false
    },
    {
     "href": "https://my-hit.org/",
@@ -2429,7 +2482,8 @@ var my_links = {
     "href": "http://7kingdoms.ru/",
     "text": "7 королевств",
     "tag": "Кино",
-    "_id": "7wlkc9zfu1471073372660"
+    "_id": "7wlkc9zfu1471073372660",
+    "favorite": false
    },
    {
     "href": "http://7kingdoms.ru/talk/forums/game-of-thrones/",
@@ -2451,13 +2505,15 @@ var my_links = {
     "href": "http://lki.ru/",
     "text": "Сайт сдохшего журнала \"Лучшие компьютерные игры\"",
     "tag": "Игры",
-    "_id": "5hkwvr7et1471073372660"
+    "_id": "5hkwvr7et1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.igromania.ru/",
     "text": "Игромания",
     "tag": "Игры",
-    "_id": "978vhz5o41471073372660"
+    "_id": "978vhz5o41471073372660",
+    "favorite": false
    }
   ],
   "pictures": [
@@ -2465,154 +2521,178 @@ var my_links = {
     "href": "https://www.reddit.com/r/CityPornGifs/",
     "text": "Reddit City Porn Gifs",
     "tag": "Gif",
-    "_id": "hp7yuet1w1471073372660"
+    "_id": "hp7yuet1w1471073372660",
+    "favorite": false
    },
    {
     "href": "https://commons.wikimedia.org/wiki/Category:Yellow_sunrises",
     "text": "Жёлтые закаты на Википедии",
     "tag": "Фото",
-    "_id": "3aqwo0a8y1471073372660"
+    "_id": "3aqwo0a8y1471073372660",
+    "favorite": false
    },
    {
     "href": "http://surrealistisch.blogspot.ru/2009/05/sergei-aparin.html",
     "text": "Surrealism and Visionary art",
     "tag": "Art",
-    "_id": "l65hrw2331471073372660"
+    "_id": "l65hrw2331471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.huffingtonpost.co.uk/news/mount-etna/",
     "text": "huffington post - новости в картинках",
     "tag": "Фото",
-    "_id": "wt0ng3lj01471073372660"
+    "_id": "wt0ng3lj01471073372660",
+    "favorite": false
    },
    {
     "href": "http://loveopium.ru/news/izverzhenie-vulkana-etna.html",
     "text": "Loveopium - русскоязычный бложик с фотками, не думаю, что долго протянет",
     "tag": "Фото",
-    "_id": "mvxyaw6zr1471073372660"
+    "_id": "mvxyaw6zr1471073372660",
+    "favorite": false
    },
    {
     "href": "http://yourshot.nationalgeographic.com/tags/etna/",
     "text": "National Geographic",
     "tag": "Фото",
     "favorite": true,
-    "favorite_text": "",
+    "favorite_text": "National Geographic",
     "_id": "kbmfsao7j1471073372660"
    },
    {
     "href": "http://giphy.com/grandedame",
     "text": "grande dame - trippy animation",
     "tag": "Gif",
-    "_id": "xt29jhg7g1471073372660"
+    "_id": "xt29jhg7g1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.1zoom.ru/topic.php",
     "text": "1zoom - Обои на всякие темы",
     "tag": "Обои",
-    "_id": "mozgaghkx1471073372660"
+    "_id": "mozgaghkx1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.1zoom.ru/%D0%A4%D1%8D%D0%BD%D1%82%D0%B5%D0%B7%D0%B8/t2/1/",
     "text": "1zoom - Фэнтези",
     "tag": "Фэнтези",
-    "_id": "bi1jtmblz1471073372660"
+    "_id": "bi1jtmblz1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.1zoom.ru/%D0%A4%D1%8D%D0%BD%D1%82%D0%B5%D0%B7%D0%B8/%D0%A1%D1%82%D0%B8%D0%BC%D0%BF%D0%B0%D0%BD%D0%BA/t2/1/",
     "text": "1zoom - стимпанк",
     "tag": "Фэнтези",
-    "_id": "s8xeokmd81471073372660"
+    "_id": "s8xeokmd81471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.artfile.ru/",
     "text": "ArtFile - старейший ресурс с обоями",
     "tag": "Фэнтези",
-    "_id": "iic07strv1471073372660"
+    "_id": "iic07strv1471073372660",
+    "favorite": false
    },
    {
     "href": "http://giphy.com/search/spaceship",
     "text": "giphy - spaceship",
     "tag": "Мусор",
-    "_id": "nlev4665x1471073372660"
+    "_id": "nlev4665x1471073372660",
+    "favorite": false
    },
    {
     "href": "https://squaredreality.tumblr.com/tagged/pixel-gif",
     "text": "squaredreality - pixel gif",
     "tag": "tumblr",
-    "_id": "qo5705lxk1471073372660"
+    "_id": "qo5705lxk1471073372660",
+    "favorite": false
    },
    {
     "href": "http://valenberg.deviantart.com/",
     "text": "valenberg pixel gif",
     "tag": "deviant",
-    "_id": "jtawq6ilw1471073372660"
+    "_id": "jtawq6ilw1471073372660",
+    "favorite": false
    },
    {
     "href": "http://kirokaze.deviantart.com/",
     "text": "kirokaze pixel gif",
     "tag": "deviant",
-    "_id": "hacdj0cjt1471073372660"
+    "_id": "hacdj0cjt1471073372660",
+    "favorite": false
    },
    {
     "href": "http://noirlac.tumblr.com/post/74269926704",
     "text": "noirlac - shit",
     "tag": "tumblr",
-    "_id": "jfx1ts5jc1471073372660"
+    "_id": "jfx1ts5jc1471073372660",
+    "favorite": false
    },
    {
     "href": "http://blog.ninapaley.com/category/seder-masochism/page/2/",
     "text": "seder-masochism - религиозные гифки",
     "tag": "Gif",
-    "_id": "rzgfwezlo1471073372660"
+    "_id": "rzgfwezlo1471073372660",
+    "favorite": false
    },
    {
     "href": "http://nevsepic.com.ua/",
     "text": "Мир картинок",
     "tag": "Разное",
     "favorite": true,
-    "_id": "1u42g2w5s1471073372660"
+    "_id": "1u42g2w5s1471073372660",
+    "favorite_text": "Мир картинок"
    },
    {
     "href": "http://www.airpano.ru/360Degree-VirtualTour.php?3D=Saint-Petersburg-Virtual-Tour",
     "text": "Аэрофото городов",
     "tag": "Разное",
-    "_id": "vsqqf4p5e1471073372660"
+    "_id": "vsqqf4p5e1471073372660",
+    "favorite": false
    },
    {
     "href": "http://lipatov.deviantart.com/gallery/?offset=48",
     "text": "Lipatov",
     "tag": "deviant",
-    "_id": "sog2mm4gp1471073372660"
+    "_id": "sog2mm4gp1471073372660",
+    "favorite": false
    },
    {
     "href": "http://papa-ooma-mow-mow.tumblr.com/",
     "text": "papa-omma-mow-mow",
     "tag": "tumblr",
-    "_id": "hlugnwvnr1471073372660"
+    "_id": "hlugnwvnr1471073372660",
+    "favorite": false
    },
    {
     "href": "http://curehisheart.tumblr.com/page/2",
     "text": "curehisheart",
     "tag": "tumblr",
-    "_id": "c2c4d8kzt1471073372660"
+    "_id": "c2c4d8kzt1471073372660",
+    "favorite": false
    },
    {
     "href": "http://2photo.ru",
     "text": "Фоток, арт, креативная реклама",
     "tag": "Разное",
-    "_id": "mh0cju3031471073372660"
+    "_id": "mh0cju3031471073372660",
+    "favorite": false
    },
    {
     "href": "http://photo.sibnet.ru/rub/41407/",
     "text": "Живопись, графика",
     "tag": "Разное",
-    "_id": "u8dka5mda1471073372660"
+    "_id": "u8dka5mda1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.tatu.announcements.ru/thumbnails.php?album=77",
     "text": "Обои, фото, рисунки",
     "tag": "Разное",
-    "_id": "7he6b1hc31471073372660"
+    "_id": "7he6b1hc31471073372660",
+    "favorite": false
    },
    {
     "href": "http://lincochuan.deviantart.com/art/The-world-73902369",
@@ -2684,13 +2764,15 @@ var my_links = {
     "href": "https://thepiratebay.se/",
     "text": "Piratebay.se",
     "tag": "Главное",
-    "_id": "tac3gxzwy1471073372660"
+    "_id": "tac3gxzwy1471073372660",
+    "favorite": false
    },
    {
     "href": "https://thepiratebay.cr/",
     "text": "недовернное зеркало Pirate Bay",
     "tag": "Главное",
-    "_id": "0n1nrvxoe1471073372660"
+    "_id": "0n1nrvxoe1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.xorosho.com/",
@@ -2736,19 +2818,21 @@ var my_links = {
     "href": "http://torrentfreak.com/",
     "text": "торрент-фрик - Новости",
     "tag": "Главное",
-    "_id": "i4pqzwnko1471073372660"
+    "_id": "i4pqzwnko1471073372660",
+    "favorite": false
    },
    {
     "href": "http://findmagnet.org/",
     "text": "findmagnet",
     "tag": "Поиск",
-    "_id": "5eawjpxnp1471073372660"
+    "_id": "5eawjpxnp1471073372660",
+    "favorite": false
    },
    {
     "href": "http://bitsnoop.com/",
     "text": "bitsnoop - поисковик магнитных ссылок",
     "tag": "Поиск",
-    "favorite": "true",
+    "favorite": true,
     "favorite_text": "bitsnoop ",
     "_id": "azv4ehvh61471073372660"
    },
@@ -2756,235 +2840,274 @@ var my_links = {
     "href": "http://btdigg.org/",
     "text": "BTDigg - поиск по dht",
     "tag": "Поиск",
-    "_id": "v784csumi1471073372660"
+    "_id": "v784csumi1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.torrentreactor.net/",
     "text": "Торрент-реактор",
     "tag": "Поиск",
-    "_id": "izvdq0oqw1471073372660"
+    "_id": "izvdq0oqw1471073372660",
+    "favorite": false
    },
    {
     "href": "http://torrentz.eu/",
     "text": "torrentz.eu - ещё один поисковик торрентов",
     "tag": "Поиск",
-    "_id": "58jnkc37z1471073372660"
+    "_id": "58jnkc37z1471073372660",
+    "favorite": false
    },
    {
     "href": "http://isohunt.to/",
     "text": "isohunt",
     "tag": "Поиск",
-    "_id": "x9kbf85jj1471073372660"
+    "_id": "x9kbf85jj1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.monova.org/",
     "text": "monova",
     "tag": "Поиск",
-    "_id": "34lehtzlw1471073372660"
+    "_id": "34lehtzlw1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.xorosho.com/",
     "text": "Хорошо!",
     "tag": "Обменники",
-    "_id": "ohy5advdo1471073372660"
+    "_id": "ohy5advdo1471073372660",
+    "favorite": false
    },
    {
     "href": "http://nnm.ru/",
     "text": "Noname.ru",
     "tag": "Обменники",
-    "_id": "5v1c5virj1471073372660"
+    "_id": "5v1c5virj1471073372660",
+    "favorite": false
    },
    {
     "href": "http://avaxhome-mirrors.pw/",
     "text": "Зеркала avaxhome",
     "tag": "Обменники",
-    "_id": "2cusnmstw1471073372660"
+    "_id": "2cusnmstw1471073372660",
+    "favorite": false
    },
    {
     "href": "http://avxhome.se/",
     "text": "avxhome.se - зеркало avaxhome",
     "tag": "Обменники",
-    "_id": "ur7wtieij1471073372660"
+    "_id": "ur7wtieij1471073372660",
+    "favorite": false
    },
    {
     "href": "http://avxhome.in/",
     "text": "avxhome.in - зеркало avaxhome",
     "tag": "Обменники",
-    "_id": "z38stepdk1471073372660"
+    "_id": "z38stepdk1471073372660",
+    "favorite": false
    },
    {
     "href": "https://avxhome.unblocked.tv/",
     "text": "unblockers avaxhome",
     "tag": "Обменники",
-    "_id": "x2arui9mv1471073372660"
+    "_id": "x2arui9mv1471073372660",
+    "favorite": false
    },
    {
     "href": "https://www.facebook.com/AvaxHome-121754914527366/",
     "text": "facebook.com/AvaxHome",
     "tag": "Обменники",
-    "_id": "iwy5izi5f1471073372660"
+    "_id": "iwy5izi5f1471073372660",
+    "favorite": false
    },
    {
     "href": "http://tfile.ru",
     "text": "tfile",
     "tag": "Торренты",
-    "_id": "vt2ktxy981471073372660"
+    "_id": "vt2ktxy981471073372660",
+    "favorite": false
    },
    {
     "href": "http://extratorrent.cc/",
     "text": "Экстраторрент",
     "tag": "Торренты",
-    "_id": "j7bi84mhf1471073372660"
+    "_id": "j7bi84mhf1471073372660",
+    "favorite": false
    },
    {
     "href": "http://megashara.com/",
     "text": "Мегашара",
     "tag": "Торренты",
-    "_id": "wqp7dsm1k1471073372660"
+    "_id": "wqp7dsm1k1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.fast-torrent.ru/",
     "text": "Fast torrent",
     "tag": "Торренты",
-    "_id": "ntntog30t1471073372660"
+    "_id": "ntntog30t1471073372660",
+    "favorite": false
    },
    {
     "href": "http://torrentor.net/",
     "text": "Torrentor.net",
     "tag": "Торренты",
-    "_id": "yryvs98js1471073372660"
+    "_id": "yryvs98js1471073372660",
+    "favorite": false
    },
    {
     "href": "http://goldenshara.org/",
     "text": "Golden Shara",
     "tag": "Торренты",
-    "_id": "9i05mvx951471073372660"
+    "_id": "9i05mvx951471073372660",
+    "favorite": false
    },
    {
     "href": "http://opensharing.org/",
     "text": "OpenSharing.ORG :: Открытый торрент трекер - скачать бесплатно и без регистрации",
     "tag": "Торренты",
-    "_id": "158j7wsmp1471073372660"
+    "_id": "158j7wsmp1471073372660",
+    "favorite": false
    },
    {
     "href": "http://new-rutor.org/seriali",
     "text": "Пиратское зеркало Rutor",
     "tag": "Торренты",
-    "_id": "45h9o5u5d1471073372660"
+    "_id": "45h9o5u5d1471073372660",
+    "favorite": false
    },
    {
     "href": "http://film.arjlover.net/film/",
     "text": "советские фильмы",
     "tag": "Торренты",
-    "_id": "60k5wl1rn1471073372660"
+    "_id": "60k5wl1rn1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.mininova.org/",
     "text": "Мининова",
     "tag": "Торренты",
-    "_id": "vttkrmi3a1471073372660"
+    "_id": "vttkrmi3a1471073372660",
+    "favorite": false
    },
    {
     "href": "http://treckera.net/",
     "text": "http://treckera.net/",
     "tag": "Мусор",
-    "_id": "y91kjo3yu1471073372660"
+    "_id": "y91kjo3yu1471073372660",
+    "favorite": false
    },
    {
     "href": "http://7tor.org/",
     "text": "7tor",
     "tag": "Мусор",
-    "_id": "i4cd1iorj1471073372660"
+    "_id": "i4cd1iorj1471073372660",
+    "favorite": false
    },
    {
     "href": "http://torrento.net/",
     "text": "http://torrento.net/",
     "tag": "Мусор",
-    "_id": "nw8c0nwac1471073372660"
+    "_id": "nw8c0nwac1471073372660",
+    "favorite": false
    },
    {
     "href": "http://dvddate.ru",
     "text": "Даты релизов на DVD",
     "tag": "Мусор",
-    "_id": "ova3uqhax1471073372660"
+    "_id": "ova3uqhax1471073372660",
+    "favorite": false
    },
    {
     "href": "http://torrento.net/",
     "text": "торннето",
     "tag": "Мусор",
-    "_id": "1xve0eevq1471073372660"
+    "_id": "1xve0eevq1471073372660",
+    "favorite": false
    },
    {
     "href": "http://supershara.com/",
     "text": "Goldenshara-supershara",
     "tag": "Мусор",
-    "_id": "cbwtxxzy31471073372660"
+    "_id": "cbwtxxzy31471073372660",
+    "favorite": false
    },
    {
     "href": "http://goldenshara.com/index.php",
     "text": "Goldenshara.com",
     "tag": "Мусор",
-    "_id": "z29a4lvfk1471073372660"
+    "_id": "z29a4lvfk1471073372660",
+    "favorite": false
    },
    {
     "href": "http://www.uptracker.ru/",
     "text": "Список трекеров",
     "tag": "Мусор",
-    "_id": "y737g0x5z1471073372661"
+    "_id": "y737g0x5z1471073372661",
+    "favorite": false
    },
    {
     "href": "http://www.uptracker.ru/search",
     "text": "Поиск",
     "tag": "Мусор",
-    "_id": "8hclsezoq1471073372661"
+    "_id": "8hclsezoq1471073372661",
+    "favorite": false
    },
    {
     "href": "http://emule-security.org/",
     "text": "emule-security",
     "tag": "emule",
-    "_id": "628u1dgdz1471073372661"
+    "_id": "628u1dgdz1471073372661",
+    "favorite": false
    },
    {
     "href": "http://www.emule-project.net/home/perl/general.cgi?l=34",
     "text": "emule-project",
     "tag": "emule",
-    "_id": "6lsijadm21471073372661"
+    "_id": "6lsijadm21471073372661",
+    "favorite": false
    },
    {
     "href": "http://rutor.is",
     "text": "Рутор - зеркало из",
     "tag": "Торренты",
-    "_id": "wgix9bosu1471073372661"
+    "_id": "wgix9bosu1471073372661",
+    "favorite": false
    },
    {
     "href": "http://zerkalo-rutor.org/",
     "text": "Рутор зеркало",
     "tag": "Торренты",
-    "_id": "wzen840n91471073372661"
+    "_id": "wzen840n91471073372661",
+    "favorite": false
    },
    {
     "href": "http://lsuzvpko6w6hzpnn.onion/",
     "text": "Kickass",
     "tag": "Tor",
-    "_id": "yj9j2mibz1471073372661"
+    "_id": "yj9j2mibz1471073372661",
+    "favorite": false
    },
    {
     "href": "http://rutorc6mqdinc4cz.onion",
     "text": "Рутор",
     "tag": "Tor",
-    "_id": "b3qgjd6s71471073372661"
+    "_id": "b3qgjd6s71471073372661",
+    "favorite": false
    },
    {
     "href": "http://uj3wazyk5u4hnvtk.onion",
     "text": "PirateBay",
     "tag": "Tor",
-    "_id": "1qmgd6byn1471073372661"
+    "_id": "1qmgd6byn1471073372661",
+    "favorite": false
    },
    {
     "href": "http://flibustahezeous3.onion/",
     "text": "Флибуста",
     "tag": "Tor",
-    "_id": "u7mmgzgsa1471073372661"
+    "_id": "u7mmgzgsa1471073372661",
+    "favorite": false
    },
    {
     "href": "https://rarbg.to/index8.php",
@@ -3299,7 +3422,7 @@ var my_links = {
     "text": "McMillian Dictionary",
     "tag": "Словари",
     "favorite": true,
-    "favorite_text": "",
+    "favorite_text": "McMillian Dictionary",
     "_id": "bfr11yk0c1471073372661"
    },
    {
@@ -3375,7 +3498,7 @@ var my_links = {
     "text": "merriam webster",
     "tag": "Словари",
     "favorite": true,
-    "favorite_text": "",
+    "favorite_text": "merriam webster",
     "_id": "r318iuhsv1471073372661"
    },
    {
