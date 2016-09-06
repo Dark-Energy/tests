@@ -101,19 +101,19 @@ var my_links = {
    },
    {
     "href": "http://tsn.ua/",
-    "text": "ТСН - более менее вменяемые укроновости",
+    "text": "ТСН",
     "tag": "Укросми",
     "_id": "uzm7muyh21471073372657"
    },
    {
     "href": "http://www.unian.net/",
-    "text": "Униан - укроновости",
+    "text": "Униан",
     "tag": "Укросми",
     "_id": "2xsrdy8pc1471073372657"
    },
    {
     "href": "http://censor.net.ua/",
-    "text": "Укроновости Цензор.Нет",
+    "text": "Цензор.Нет",
     "tag": "Укросми",
     "_id": "hn3il7wc81471073372657"
    },
@@ -228,7 +228,7 @@ var my_links = {
     "_id": "pplmk3jvr1471073372657"
    },
    {
-    "href": "http://gefter.ru/archive/16968",
+    "href": "http://gefter.ru/",
     "text": "Гефтер",
     "tag": "Политика",
     "_id": "g87361vw91471073372657"
@@ -284,7 +284,7 @@ var my_links = {
    {
     "href": "http://zhlob.info/",
     "text": "Жлоб",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "4f6p2nfzg1471073372657"
    },
    {
@@ -390,7 +390,7 @@ var my_links = {
    {
     "href": "http://scisne.net/",
     "text": "псевдонаучная историческая шиза",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "rb7lqk6nt1471073372657"
    },
    {
@@ -409,7 +409,7 @@ var my_links = {
    },
    {
     "href": "http://www.rus-obr.ru/",
-    "text": "Русский оборзеватель - личный сайт Холмогорова",
+    "text": "Русский оборзеватель",
     "tag": "Политика",
     "_id": "7nlsdu3c51471073372657"
    },
@@ -427,7 +427,7 @@ var my_links = {
    },
    {
     "href": "http://www.newsland.ru/",
-    "text": "newsland - подборки новостей с комментариями дебилов",
+    "text": "newsland",
     "tag": "Разное",
     "_id": "lgh6ukw431471073372657"
    },
@@ -476,7 +476,7 @@ var my_links = {
    {
     "href": "http://www.sovross.ru/",
     "text": "Совроска",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "v7xxlmfgi1471073372657"
    },
    {
@@ -518,7 +518,7 @@ var my_links = {
    {
     "href": "http://v102.ru/",
     "text": "Высота 102",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "wxurakp161471073372657"
    },
    {
@@ -548,7 +548,7 @@ var my_links = {
    {
     "href": "http://file-rf.ru/",
     "text": "Файл-рф",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "x0f584ru61471073372657"
    },
    {
@@ -560,67 +560,67 @@ var my_links = {
    {
     "href": "http://www.stoletie.ru/",
     "text": "Столетие",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "9ib76483a1471073372657"
    },
    {
     "href": "http://www.nenovosty.ru/",
     "text": "Неновости",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "g89cibzpe1471073372657"
    },
    {
     "href": "http://www.warandpeace.ru/ru/",
     "text": "Война и мир",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "37ycoxef21471073372657"
    },
    {
     "href": "http://www.echo.msk.ru/",
     "text": "Ухо москвы",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "5y8vr4aet1471073372657"
    },
    {
     "href": "http://smoking-room.ru/",
     "text": "Курилка",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "09qngxbgb1471073372657"
    },
    {
     "href": "http://semiurg.ru/",
     "text": "http://semiurg.ru/",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "nl8sqy3uw1471073372657"
    },
    {
     "href": "http://www.newscientist.com/",
     "text": "http://www.newscientist.com/",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "jka2e3if71471073372657"
    },
    {
     "href": "http://www.km.ru/",
     "text": "KM.RU",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "qnx9tfpro1471073372657"
    },
    {
     "href": "http://www.polemics.ru/",
     "text": "Полемика и дискуссии",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "jws7vkb5i1471073372657"
    },
    {
     "href": "http://conspirolog.org/",
     "text": "Конспиролог",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "gtftz1n781471073372657"
    },
    {
     "href": "http://narpolit.ru/",
     "text": "Народный политолог",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "kaxnkfbi31471073372657"
    },
    {
@@ -670,7 +670,7 @@ var my_links = {
    {
     "href": "http://2-1.ru/",
     "text": "Двое против одного - видео",
-    "tag": "Кал",
+    "tag": "Всякое",
     "_id": "v13cy7m1s1471073372657"
    },
    {
@@ -736,7 +736,7 @@ var my_links = {
    {
     "href": "http://topru.org/",
     "text": "русский топ по блогам",
-    "tag": "Кал",
+    "tag": "Всякое",
     "favorite": false,
     "favorite_text": "",
     "_id": "hysnieiqi1471073372657"
@@ -2013,7 +2013,7 @@ var my_links = {
    },
    {
     "href": "http://www.diary.ru/~musicbunker/",
-    "text": "Музыкальный ящик",
+    "text": "МузыВсякоеьный ящик",
     "tag": "Главное",
     "favorite": false,
     "_id": "334tpka1s1471073372659"
@@ -2239,7 +2239,7 @@ var my_links = {
    },
    {
     "href": "http://ip-calculator.ru/",
-    "text": "Калькулятор подсети",
+    "text": "Всякоеькулятор подсети",
     "tag": "Техподдержка",
     "_id": "beif0dbth1471073372659",
     "favorite": false
@@ -2769,7 +2769,7 @@ var my_links = {
    },
    {
     "href": "https://thepiratebay.cr/",
-    "text": "недовернное зеркало Pirate Bay",
+    "text": "недовернное зерВсякоео Pirate Bay",
     "tag": "Главное",
     "_id": "0n1nrvxoe1471073372660",
     "favorite": false
@@ -2887,21 +2887,21 @@ var my_links = {
    },
    {
     "href": "http://avaxhome-mirrors.pw/",
-    "text": "Зеркала avaxhome",
+    "text": "ЗерВсякоеа avaxhome",
     "tag": "Обменники",
     "_id": "2cusnmstw1471073372660",
     "favorite": false
    },
    {
     "href": "http://avxhome.se/",
-    "text": "avxhome.se - зеркало avaxhome",
+    "text": "avxhome.se - зерВсякоео avaxhome",
     "tag": "Обменники",
     "_id": "ur7wtieij1471073372660",
     "favorite": false
    },
    {
     "href": "http://avxhome.in/",
-    "text": "avxhome.in - зеркало avaxhome",
+    "text": "avxhome.in - зерВсякоео avaxhome",
     "tag": "Обменники",
     "_id": "z38stepdk1471073372660",
     "favorite": false
@@ -2971,7 +2971,7 @@ var my_links = {
    },
    {
     "href": "http://new-rutor.org/seriali",
-    "text": "Пиратское зеркало Rutor",
+    "text": "Пиратское зерВсякоео Rutor",
     "tag": "Торренты",
     "_id": "45h9o5u5d1471073372660",
     "favorite": false
@@ -3069,14 +3069,14 @@ var my_links = {
    },
    {
     "href": "http://rutor.is",
-    "text": "Рутор - зеркало из",
+    "text": "Рутор - зерВсякоео из",
     "tag": "Торренты",
     "_id": "wgix9bosu1471073372661",
     "favorite": false
    },
    {
     "href": "http://zerkalo-rutor.org/",
-    "text": "Рутор зеркало",
+    "text": "Рутор зерВсякоео",
     "tag": "Торренты",
     "_id": "wzen840n91471073372661",
     "favorite": false

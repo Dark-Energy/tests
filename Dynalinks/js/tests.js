@@ -141,8 +141,53 @@ function test_edit_link_ko()
 }
 
 
+function test_edit_form_textarea()
+{
+	var params = {};
+	params.type = "textarea";
+	params.value = "<p>asdfasdfadf <b>asdfdsf</b> <p>asdf asdfas fds fds";
+	params.not_escape = true;
+	params.handler = function (value) {
+		console.log("ok ", value);
+	}
+	
+	var form = new PopupForm(params);
+	form.show();
+}
+
+
+function test_edit_form_textarea()
+{
+	var params = {};
+	params.type = "custom";
+	
+	params.fields = [
+		{
+		"data-value" : "comment",
+		"type": "textarea",
+		"value": "<p>asdfasdfadf <b>asdfdsf</b> <p>asdf asdfas fds fds"
+		},
+		{
+		"type": "text",
+		"value": "my text",
+		"data-value": "tag",
+		}
+	];
+
+	params.not_escape = true;
+	params.handler = function (value) {
+		console.log("ok ", value);
+	}
+	
+	var form = new PopupForm(params);
+	form.show();
+
+}
+
+
 document.addEventListener("DOMContentLoaded", function(event) { 
 	//test_edit_form();
 	//test_add_category();
 	//test_edit_link_ko();
+	//test_edit_form_textarea();
 });

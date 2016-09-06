@@ -336,3 +336,26 @@ end top-button
 	padding: 5px;
 }
 
+
+
+.search-result a,
+.search-result a:visited,
+.search-result a:hover
+{
+	display: inline;
+
+	padding: 1px 1px;
+	margin: 0;
+	color: black;
+	width: auto;
+	font-family: Verdana, Georgia, serif;
+	font-size: 14px;
+	border: none;
+	text-decoration: none;
+}
+
+.search-result thead
+{
+	background-color: #77AA77;
+	color: #FFFFFF;
+}

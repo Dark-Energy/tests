@@ -1,16 +1,28 @@
 ﻿/*
 Utils functions
 
+//trim, forEach, every
 */
+
+if (!String.prototype.trim) {
+  (function() {
+    // Вырезаем BOM и неразрывный пробел
+    String.prototype.trim = function() {
+      return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+    };
+  })();
+}
 
 function create_url()
 {
 	var r = "";
 	for(var i= 0; i < arguments.length; i++) {
-		if (i > 0) {
-			r += "/";
+		if (typeof arguments[i] !== 'undefined') {
+			if (i > 0) {
+				r += "/";
+			}
+			r += encodeURIComponent(arguments[i]);
 		}
-		r += encodeURIComponent(arguments[i]);
 	}
 	return r;
 }
@@ -48,6 +60,7 @@ function find_all_by_field_value(arr, field, value)
 	}
 	return result;
 }
+
 
 
 function find_by_field_value(arr, field, value)
@@ -160,7 +173,7 @@ My_Router.prototype.test_hash = function (url)
 
 My_Router.prototype.add_default = function (callback, obj) 
 {
-	this.default_route = {callback: callback, obj, obj};
+	this.default_route = {callback: callback, obj: obj};
 }
 
 My_Router.prototype._add = function (re, callback, obj)
@@ -296,7 +309,9 @@ function Dynalinks(data, display)
 
 Dynalinks.prototype.create_url = function(category, tag)
 {
-	return create_url.apply(this, arguments);
+	var a = Array.prototype.slice.call(arguments, 0);
+	a.unshift("view");
+	return create_url.apply(this, a);
 }
 
 Dynalinks.prototype.Database_Name = "database.txt";
@@ -350,7 +365,7 @@ Dynalinks.Context.prototype.move_item = function (item, new_tag)
 Dynalinks.Context.prototype.change_favorite = function(item, favorite, favorite_text)
 {
 	//remove or add to favorites
-	if (item.favorite !== favorite) {
+	if (!!(item.favorite) !== !!(favorite)) {
 		if (item.favorite) {
 			this.favorites.remove( function (i) { return i._id === item._id; } );
 			delete item.favorite_text;
@@ -397,14 +412,6 @@ Dynalinks.Context.prototype.remove_page = function (tag)
 	
 	//remove page tag from tag list
 	this.tags.remove(function (i) { return i === tag;});
-	/*
-	for(var i = 0; i < this.tags.length; i++) {
-		if (this.tags[i] === tag) {
-			this.tags.splice(i, 1);
-			return;
-		}
-	}
-	*/
 	
 	//clean favorite list
 	this.favorites.remove( function (i) {return i.tag === tag;});
@@ -490,6 +497,9 @@ Dynalinks.prototype.show_category = function (name)
 	if (!name || !this.names[name]) {
 		console.log("Category " + name + " not found");
 		name = get_first_key(this.names);
+		if (!name) {
+			return;
+		}
 	}
 	console.log("show category");
 	var context = this.get_category_context(name);
@@ -518,6 +528,10 @@ Dynalinks.prototype.get_page_template = function ()
 Dynalinks.prototype.show_page = function (name)
 {
 	this.context = this.get_active_context();
+	//empty data
+	if (!this.context) {
+		return;
+	}
 	if (!name || !this.context.pages[name]) {
 		var old_name = name;
 		name = get_first_key_secure(this.context.pages);
@@ -536,42 +550,13 @@ Dynalinks.prototype.show_page = function (name)
 
 Dynalinks.prototype.show_category_menu = function ()
 {
-	this.category_menu = ko.observableArray(dictionary_to_array(my_links.names, "hash", "text"));
+	this.category_menu = ko.observableArray(dictionary_to_array(this.names, "hash", "text"));
 	ko.applyBindings(this, document.getElementById("category-menu"));
 }
 
-Dynalinks.prototype.add_routes = function()
-{
-	mr = new My_Router();
-	mr.add_route(":category/:page", 
-	function (category, page) {
-		if (this.current_category 
-		&& this.current_category === category) {
-			this.show_page(page);
-		}
-		else {
-			this.show_category(category);
-			this.show_page(page);
-		}
-	}, this);
-		
-	mr.add_route(":category", function (category) {
-		this.show_category(category);		
-		this.show_page(null);
-	}, this);
-	
-	mr.add_default(function () {
-		this.show_category(null);
-		this.show_page(null);
-	}, this);
-	mr.start(true);	
-}
-
-var mr;
 
 Dynalinks.prototype.initialize = function ()
 {
-	this.add_routes();
 	this.show_category_menu();
 }
 
@@ -590,8 +575,6 @@ Dynalinks.prototype.add_link_to_category = function (item, category)
 	this.database[category].push(item);	
 	var context = this.get_category_context(category);
 	context.add_item(item);
-	
-	mr.navigate(this.create_url(category, item.tag), true);	
 }
 
 
@@ -608,10 +591,13 @@ Dynalinks.prototype.add_category = function (name)
 		alert("Категория с таким названием уже существует!");
 		return;
 	}
+	if (!name)  {
+		alert("Имя новой категории не задано!");
+		return;
+	}
 	this.database[name] = new Array();
 	this.names[name] = name;
 	this.category_menu.push({hash:name, text: name});
-	mr.navigate(this.create_url(name), true);
 }
 
 Dynalinks.prototype.remove_tag = function (category, tag)
@@ -629,7 +615,7 @@ Dynalinks.prototype.move_tag = function (tag, old_category, new_category)
 	}
 	//1. update database
 	if (!this.names[new_category]) {
-		this.add_category(name);
+		this.add_category(new_category);
 	}
 	var src = this.database[old_category];
 	var dest = this.database[new_category];
@@ -653,8 +639,6 @@ Dynalinks.prototype.move_tag = function (tag, old_category, new_category)
 	//new_context.insert_page(tag, old_context.pages[tag]);
 	//old_context.remove_page(tag);
 	
-	//3. reshow page
-	mr.navigate( this.create_url(new_category,tag), true);
 }
 
 
@@ -696,7 +680,7 @@ Dynalinks.prototype.update_item = function(old, new_value)
 	if (old.tag !== new_value.tag || new_value.new_tag) {
 		this.context.move_item(old, new_value.new_tag || new_value.tag);
 	}
-	mr.navigate(this.create_url(this.context.category_name, old.tag), true);	
+	return {"category": this.context.category_name, "tag": old.tag};
 	
 }
 
@@ -727,17 +711,42 @@ Dynalinks.prototype.remove_category = function (name)
 		delete this.names[name];
 	}
 	this.category_menu.remove( function (i) { return i.hash === name; });
-	if (this.context.category_name === name) {
-		mr.navigate(this.create_url(get_first_key(this.names)), true);
+}
+
+Dynalinks.prototype.search = function (fields, value)
+{
+	var cat;
+	var result = new Array;
+	var name;
+	for(var key in this.names) {
+		if (!Object.prototype.hasOwnProperty.call(this.names, key)) {
+			continue;
+		}
+		name = key;
+		cat = this.database[name];
+		cat.forEach( function (item) {
+			
+			fields.every( function (field) { 
+				if (item[field].search(value) !== -1) {
+					result.push( {"item": item, "cat": name});
+					return false;
+				}
+				return true;
+			});
+		});
 	}
+	return result;
 }
 
 /*
 APPLICATION
 */
 
-function Application()
+var mr;
+
+function Application(database)
 {
+	this.database = database;
 	var self = this;
 	document.addEventListener("DOMContentLoaded", function(event) { 
 		if (self.Initialize()) {
@@ -779,10 +788,16 @@ Application.prototype.move_tag = function ()
 	];
 	var self = this;
 	params.handler = function (value) {
+		var tag = self.dynalinks.context.current_tag;
+		var source_category = self.dynalinks.context.category_name;
+		var new_category = value.new_category || value.category;
 		self.dynalinks.move_tag(
-			self.dynalinks.context.current_tag, 
-			self.dynalinks.context.category_name, 
-			value.new_category || value.category);
+			tag, 
+			source_category, 
+			new_category);
+		//3. reshow page
+		mr.navigate( self.dynalinks.create_url(new_category,tag), true);
+
 	}
 	var form = new PopupForm(params);
 	form.show();
@@ -806,7 +821,10 @@ Application.prototype.add_item = function ()
 			value.tag = value.new_tag;
 			delete value.new_tag;
 		}
-		self.dynalinks.add_link_to_category(value, self.dynalinks.context.category_name);	
+		var category = self.dynalinks.context.category_name;
+		var tag = value.tag;
+		self.dynalinks.add_link_to_category(value, category);	
+		mr.navigate(self.dynalinks.create_url(category, tag), true);
 	}
 	
 	var form = new PopupForm(params);
@@ -832,7 +850,8 @@ Application.prototype.edit_item = function (id)
 	var self = this;
 	params.handler = function (value) 
 	{
-		self.dynalinks.update_item(item, value);
+		var result = self.dynalinks.update_item(item, value);
+		mr.navigate(self.dynalinks.create_url(result.category, result.tag), true);			
 	}
 	var form = new PopupForm(params);
 	form.show();
@@ -870,6 +889,7 @@ Application.prototype.remove_category = function ()
 	var self = this;
 	params.handler = function (value) {
 		self.dynalinks.remove_category(self.dynalinks.context.category_name);
+		mr.navigate(self.dynalinks.create_url(get_first_key(self.dynalinks.names)), true);
 	}
 	var form = new PopupForm(params);
 	form.show();
@@ -900,11 +920,77 @@ Application.prototype.create_category = function ()
 	params.title = "Название новой папки";
 	var self  = this;
 	params.handler = function (value) {
-		self.dynalinks.add_category(value)
+		self.dynalinks.add_category(value);
+		mr.navigate(self.dynalinks.create_url(value), true);
 	}
 	var form = new PopupForm(params);
 	form.show();
 }
+
+Application.prototype.move_item = function ()
+{
+	
+}
+
+
+Application.prototype.search = function (text)
+{
+	var value = text.trim();
+	if (!value) {
+		return;
+	}
+	mr.navigate(create_url("search", value), true);
+}
+	
+Application.prototype.show_search_results = function (value)
+{
+	var results = this.dynalinks.search(["text", "href"], value);	
+
+	var context = 
+	{
+		results:results
+	};
+	var view = document.getElementById("page-content");
+	ko.cleanNode(view);
+	view.innerHTML = '';
+	
+	ko.renderTemplate("template-search-result", context, {}, view);	
+}
+
+Application.prototype.init_router = function()
+{
+	mr = new My_Router();
+	mr.add_route("view/:category/:page", 
+	function (category, page) {
+		if (this.current_category 
+		&& this.current_category === category) {
+			this.show_page(page);
+		}
+		else {
+			this.show_category(category);
+			this.show_page(page);
+		}
+	}, this.dynalinks);
+		
+	mr.add_route("view/:category", function (category) {
+		this.show_category(category);		
+		this.show_page(null);
+	}, this.dynalinks);
+	
+	mr.add_default(function () {
+		this.show_category(null);
+		this.show_page(null);
+	}, this.dynalinks);
+	
+	mr.add_route("search/:value", function (value) {
+		this.show_search_results(decodeURIComponent(value));
+	}, this);
+	
+	mr.start(true);	
+}
+
+
+
 
 var dynalinks;
 
@@ -926,7 +1012,7 @@ Application.prototype.Initialize = function ()
 	display.templates['page_edit'] = 'template-page-content-edit'
 	display.templates['page_view'] = 'template-page-content';
 	
-	dynalinks = this.dynalinks = new Dynalinks(my_links, display);
+	dynalinks = this.dynalinks = new Dynalinks(this.database, display);
 
 	ko.bindingHandlers.livelink =  {
 		init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -941,6 +1027,7 @@ Application.prototype.Initialize = function ()
 		}
 	};
 
+	this.init_router();
 	dynalinks.initialize();
 	
 	///
@@ -952,6 +1039,11 @@ Application.prototype.Initialize = function ()
 	//binding events
 	var el = document.getElementById("button-add").onclick = function () { 
 		self.add_item(); 
+	}
+	
+	
+	document.getElementById("search-button").onclick = function () {
+		self.search(document.getElementById("search-box").value);
 	}
 	
 	document.getElementById("button-create-category").onclick = function () {
@@ -996,4 +1088,4 @@ Application.prototype.Initialize = function ()
 
 
 
-app = new Application();
+app = new Application(my_links);

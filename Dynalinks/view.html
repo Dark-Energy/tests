@@ -7,6 +7,8 @@
    <link rel="stylesheet" type="text/css" href="css/edit-form.css"  />   
 	<script type="text/javascript" src="database/view.txt"></script>	   
 	<script type="text/javascript" src="js/knockout-3.3.0.js"></script>
+	<!--script type="text/javascript" src="js/knockout-3.3.0.debug.js"></script-->
+	
 	<script type="text/javascript" src="js/app.js"></script>			
 	
 	<script type="text/javascript" src="js/FileSaver.js"></script>		
@@ -71,12 +73,13 @@
 	</li>
 	<li><a href="javascript:void(0);" id="button-edit-page">Правка</a></li>
 	<li><a href="javascript:void(0);" id="button-save">Сохранить всё</a></li>
+	<li><input type="text" id="search-box"><button type="button" id="search-button">искать</button></li>
 	</ul>
 	</div>
 	
 		<div class="clear-block"></div>
 	<script type="text/html" id="template-category-menu">
-		<a data-bind="text: text, attr: {href: '#'+hash}" ></a> 
+		<a data-bind="livelink: hash, text: text" ></a> 
 	</script>
 	<div class="top-line top-buttons" id="category-menu" data-bind="template: {name: 'template-category-menu', foreach: category_menu, as: 'item'}">
 
@@ -94,12 +97,9 @@
 
 	<div class="clear-block bottom-line"></div>
 
-	<script id="template-page-menu1" type="text/html">
-	<a data-bind="text:$data, attr:{href: '#'+$parent.category_name + '/'+ $data}"></a>
-	</script>
-	
+
 	<script id="template-page-menu" type="text/html">
-	<a data-bind="text:$data, livelink:$data"></a>
+	<a data-bind="text:$data, livelink: $data"></a>
 	</script>
 	
 	<div class="buttons-headers" id="page-menu" data-bind="template:{name: 'template-page-menu', foreach: tags}">
@@ -123,6 +123,30 @@
 <script type="text/html" id="template-page-content">
 		<a data-bind="attr:{href:href}, text: text"></a>
 </script>
+
+<script type="text/html" id="template-search-result">
+	<h3>Найдено <span data-bind="text: results.length+''"></span> результатов</h3>
+	<table class="search-result">
+		<thead>
+		<tr>
+		<td>Ссылка</td>
+		<td>Тэг</td>
+		<td>Категория</td>
+		<td>Показать на странице</td>
+		</tr>
+		</thead>
+		<tbody data-bind="foreach:results">
+			<tr>
+				<td><a data-bind="attr: {href:$data.item.href}, text: $data.item.text"></a></td>
+				<td data-bind="text:$data.item.tag"></td>
+				<td data-bind="text:$data.cat"></td>
+				<td><a data-bind="attr:{ href: '#view'+'/'+$data.cat+'/'+$data.item.tag}, text: ''+$data.cat+'/'+$data.item.tag"></a></td>
+			</tr>
+		</tbody>
+	</table>
+</script>
+
+
 <div class="tab-content" id="page-content" data-bind="template:{name: display.templates[display.mode], foreach: pages[current_tag]}">
 </div>
 </div>
