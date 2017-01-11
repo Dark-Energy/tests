@@ -128,140 +128,6 @@ function dictionary_to_array(shit, key_field_name, value_field_name)
 
 
 /*
-Router
-*/
-
-function My_Router() 
-{
-	this.routes = new Array();
-}
-
-
-My_Router.prototype.decode_params = function (arr) 
-{
-	for(var i = 0; i < arr.length; i++) {
-		arr[i] = decodeURIComponent(arr[i]);
-	}
-}
-
-My_Router.prototype.test_hash = function (url)
-{
-	var item, groups;
-	for(var i = 0; i < this.routes.length; i++) {
-		item = this.routes[i];
-		item.re.lastIndex = 0;		
-		groups = item.re.exec(url);
-		if (groups) {
-			//remove whole match, left only parenthess groups
-			if (groups.length > 1) {
-				groups.splice(0,1);
-			}
-			
-			this.decode_params(groups);
-			
-			item.callback.apply(item.obj, groups);
-			
-			return true;
-		}
-	}
-	
-	//if nothing match
-	if (this.default_route) {
-		this.default_route.callback.apply(this.default_route.obj, [url]);
-	}
-}
-
-My_Router.prototype.add_default = function (callback, obj) 
-{
-	this.default_route = {callback: callback, obj: obj};
-}
-
-My_Router.prototype._add = function (re, callback, obj)
-{
-	return this.routes.push({re: re, callback: callback, obj: obj});
-}
-
-
-/*
-	lead/:category/:page transform to regexp lead/([^/]+?)/([^/])+?
-	without leading '#'!!!
-*/
-My_Router.prototype.add_route = function (route, callback, obj) 
-{
-	var frag = route.split("/");
-	
-	var t = "^";
-	var str;
-
-	for(var i = 0; i < frag.length; i++) {
-		str = frag[i];
-		if (!str || i > 0) {
-			t +="/";
-		}
-		if (str) {
-			if (str[0] === ":") {
-				t += "([^/]+?)"
-			}
-			else {
-				t += str;
-			}
-		}
-	}
-	t += "$";
-	this._add(new RegExp(t), callback, obj);
-}
-
-My_Router.prototype.hash_change = function (e)
-{
-	var hash = window.location.hash;
-	if (hash) {
-		hash = hash.split("#");
-		if (hash.length > 1) {
-			hash = hash[1];
-		}
-		if (hash && hash[0] == "/") {
-			hash = hash.slice(1);
-		}
-	}
-	this.test_hash(hash);
-}
-
-My_Router.prototype.refresh = function ()
-{
-	this.hash_change();
-}
-
-//by default call route callback without change location
-My_Router.prototype.navigate = function (hash, change_location)
-{
-	if (change_location) {
-		var new_hash = "#"+hash;
-		if (window.location.hash == new_hash) {
-			this.test_hash(hash);
-		}
-		else {
-			window.location.hash = new_hash;
-		}
-	}
-	else {
-		this.test_hash(hash);
-	}
-}
-
-My_Router.prototype.start = function (force_hash_change)
-{
-	var self = this;
-	window.addEventListener("hashchange", function (e) 
-	{
-		self.hash_change(e);
-	}, false);
-	
-	if (force_hash_change) {
-		this.hash_change();
-	}
-}
-
-/*
 
 */
 
@@ -328,6 +194,10 @@ Dynalinks.Context = function (data, category)
 	this.tags = ko.observableArray();
 	this.hash = {};
 	
+	if (!data) {
+		return;
+	}
+	
 	var item, tag;
 	for(var i = 0; i < data.length; i++)
 	{
@@ -362,30 +232,63 @@ Dynalinks.Context.prototype.move_item = function (item, new_tag)
 	remove_by_field_value(page, '_id', item._id);
 }
 
+
 Dynalinks.Context.prototype.change_favorite = function(item, favorite, favorite_text)
 {
+	if (item.favorite === favorite && item.favorite_text === favorite_text) {
+		return;
+	}
+	
+	function get_new_favorite_text(item, favorite, favorite_text)
+	{
+		var new_favorite_text = "";
+		if (favorite) {
+			var new_favorite_text = favorite_text ||  item.favorite_text || item.text;
+			if (favorite_text && favorite_text !== new_favorite_text) {
+				new_favorite_text = favorite_text;
+			}
+		}
+		return new_favorite_text;
+	}
+	
+	//fix it
+	//observable 'favorites' array must contains particular 'favorite' structure with observable fields 
+	//this very shit
+	function hack(list, item) 
+	{
+		list.remove( function (i) { return i._id === item._id; } );	
+		list.push( item );
+		//list.valueHasMutated();		
+	}
+	
+	var new_favorite_text = get_new_favorite_text(item, favorite, favorite_text);
+	
+	var list_unchange = true;
+	
 	//remove or add to favorites
-	if (!!(item.favorite) !== !!(favorite)) {
-		if (item.favorite) {
+	if (item.favorite !== favorite) {
+		item.favorite = favorite;	
+		if (!item.favorite) {
 			this.favorites.remove( function (i) { return i._id === item._id; } );
 			delete item.favorite_text;
-			return;
 		}
 		else {
+			item.favorite_text = new_favorite_text;
 			this.favorites.push( item );
 		}
-		item.favorite = favorite;
+		list_unchange = false;
 	}
-	if (item.favorite && item.favorite_text !== favorite_text) 	{
-		if (!favorite_text) {
-			item.favorite_text = item.text;
-		}
-		else {
-			item.favorite_text = favorite_text;
+
+	if (item.favorite && item.favorite_text !== new_favorite_text) 	{
+		item.favorite_text = new_favorite_text;
+		if (list_unchange) {
+			hack(this.favorites, item);
 		}
 	}
+	
 	this.favorites.valueHasMutated();
 }
+
 
 //create new page if doen't exists
 Dynalinks.Context.prototype.get_page = function (tag)
@@ -650,10 +553,10 @@ Dynalinks.prototype.save_data_to_file = function(filename, data, varname)
 	saveAs(blob, filename); 
 }
 
-Dynalinks.prototype.save_to_file = function (filename)
+Dynalinks.prototype.save_to_file = function (filename, varname)
 {
 	var db = {database: this.database, names: this.names};
-	this.save_data_to_file(filename || this.Database_Name, db, "my_links");
+	this.save_data_to_file(filename || this.Database_Name, db, this.Database_Var);
 }
 
 Dynalinks.prototype.get_from_active_context = function(_id)
@@ -661,20 +564,25 @@ Dynalinks.prototype.get_from_active_context = function(_id)
 	return find_by_field_value(this.database[this.context.category_name], '_id', _id);
 }
 
+//TODO: move special field to inner object 'special'
+//or move user fields to suboject 'user_data'?
+//or create 'favorites' struct for each category
+//this need restruct database
 Dynalinks.prototype.update_item = function(old, new_value)
 {
 	//check favorite status
-	if (old.favorite !== new_value.favorite) {
+	//this very shit
+	//if (old.favorite !== new_value.favorite) 
+	{
 		this.context.change_favorite(old, new_value.favorite, new_value.favorite_text);
 	}
-	
 	for(var key in new_value) {
-		if (key !== 'new_tag' && key !== 'tag' && 
-			Object.prototype.hasOwnProperty.call(old, key)) {
-			old[key] = new_value[key]
+		if (Object.prototype.hasOwnProperty.call(old, key) &&
+			key !== 'new_tag' && key !== 'tag' && key !== "favorite_text" && key !== "favorite")
+		{
+			old[key] = new_value[key];
 		}
 	}
-	
 	
 	//check tag changes
 	if (old.tag !== new_value.tag || new_value.new_tag) {
@@ -715,6 +623,7 @@ Dynalinks.prototype.remove_category = function (name)
 
 Dynalinks.prototype.search = function (fields, value)
 {
+	var value = value.toUpperCase();
 	var cat;
 	var result = new Array;
 	var name;
@@ -727,7 +636,8 @@ Dynalinks.prototype.search = function (fields, value)
 		cat.forEach( function (item) {
 			
 			fields.every( function (field) { 
-				if (item[field].search(value) !== -1) {
+				var tmp = item[field].toUpperCase();
+				if (tmp.search(value) !== -1) {
 					result.push( {"item": item, "cat": name});
 					return false;
 				}
@@ -1028,6 +938,9 @@ Application.prototype.Initialize = function ()
 	};
 
 	this.init_router();
+	if (this._child_init) {
+		this._child_init();
+	}
 	dynalinks.initialize();
 	
 	///
@@ -1088,4 +1001,4 @@ Application.prototype.Initialize = function ()
 
 
 
-app = new Application(my_links);
+
